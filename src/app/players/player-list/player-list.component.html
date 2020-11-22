@@ -1,0 +1,43 @@
+
+
+
+<div class="col-3">
+  <select class="form-control"
+          (change)="onSelected($event.target.value)">
+    <option value="0">- Display All -</option>
+    <option *ngFor="let category of categories$|async"
+            [value]="category.id">{{ category.name }}</option>
+  </select>
+</div>
+
+<section>
+  <!--for demo wrap-->
+  <h1> {{pageTitle}}</h1>
+  <div class="tbl-header">
+    <table  *ngIf="players$|async as players" cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Player</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table  *ngIf="players$|async as players" cellpadding="0" cellspacing="0" border="0">
+      <tbody *ngFor="let player of players">
+        <tr>
+          <td>{{ player.playerName }}</td>
+          <td>{{ player.category }}</td>
+          <td>{{ player.price | currency:"USD":"symbol":"1.2-2" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage">
+  {{ errorMessage }}
+</div> 

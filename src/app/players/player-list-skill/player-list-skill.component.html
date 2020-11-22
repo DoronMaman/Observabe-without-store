@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class='card-body'
+       *ngIf="players$|async as playerss">
+    <div class='list-group'>
+      <button type='button'
+              class='list-group-item'
+              *ngFor='let player of playerss'
+              [ngClass]="{'active': player?.id === (selectedPlayerId$|async)?.id}"
+              (click)='onSelected(player.id)'>
+        {{ player.playerName }} ({{ player.category }})
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessageAction$|async as errorMessage">
+  {{errorMessage}}
+</div>

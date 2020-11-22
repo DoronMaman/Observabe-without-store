@@ -1,0 +1,42 @@
+body,
+html {
+	height: 100%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	padding: 0;
+	margin: 0;
+	background-image: url('https://cdn.pixabay.com/photo/2016/05/22/19/07/background-1409025_960_720.png');
+	height: 100vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+#warning-message {
+	display: none;
+}
+
+@media only screen and (orientation:portrait) {
+	#wrapper {
+		display: none;
+	}
+	#warning-message {
+		display: block;
+	}
+}
+
+@media only screen and (orientation:landscape) {
+	#warning-message {
+		display: none;
+	}
+	/* 		#wrapper {
+				display: initial;
+		} */
+}
